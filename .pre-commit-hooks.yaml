@@ -1,4 +1,3 @@
-...
 - id: walrus-ast
   name: walrus-ast
   description: Warn about assignment expressions
