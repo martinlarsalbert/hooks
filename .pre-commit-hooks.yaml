@@ -1,0 +1,7 @@
+...
+- id: walrus-ast
+  name: walrus-ast
+  description: Warn about assignment expressions
+  entry: walrus-ast
+  language: python
+  types: [python]
