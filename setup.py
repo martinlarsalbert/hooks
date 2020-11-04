@@ -25,5 +25,5 @@ setuptools.setup(
     ],
     },
     python_requires='>=3.5',
-    install_requires=['nbconvert']
+    install_requires=['nbconvert',],
 )
