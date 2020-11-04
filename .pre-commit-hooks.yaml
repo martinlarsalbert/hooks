@@ -1,12 +1,12 @@
 - id: example
   name: example
   description: just a an example
-  entry: example
+  entry: example.example:main
   language: python
   types: [python]
 - id: summary
   name: summary
   description: if there is a notebook summary.ipynb this one is converted to markdown and appended to README.md
-  entry: summary
+  entry: summary.summary:main
   language: python
   types: [python]
