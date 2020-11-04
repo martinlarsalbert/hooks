@@ -40,7 +40,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     with open(readme_path, mode='w') as file:
         file.write(new_s_readme)
 
-    return 1
+    return 0
 
 if __name__ == '__main__':
     exit(main())
