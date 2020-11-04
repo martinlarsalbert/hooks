@@ -9,4 +9,4 @@
   description: if there is a notebook summary.ipynb this one is converted to markdown and appended to README.md
   entry: summary
   language: python
-  types: [python]
+  files: \.ipynb$
