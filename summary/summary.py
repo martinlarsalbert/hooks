@@ -27,6 +27,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     args = parser.parse_args(argv)
 
     summary_path = find_summary(filenames=args.filenames)
+    print(summary_path)
     if summary_path is None:
         return 0
 
@@ -40,5 +41,5 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     return 0
 
 if __name__ == '__main__':
-
+    print('Summmmmmmary')
     exit(main())
