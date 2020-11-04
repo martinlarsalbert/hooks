@@ -36,8 +36,13 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     if summary_path is None:
         return 0
 
+    summary_path = os.path.abspath(summary_path)
+
     readme_path_head = 'README_.md'  # before appending
     readme_path = 'README.md'        # after appending
+
+    readme_path_head = os.path.abspath(readme_path_head)
+    readme_path = os.path.abspath(readme_path)
 
     new_s_readme = append_new_body(summary_filename=summary_path, readme_path=readme_path_head)
     with open(readme_path, mode='w') as file:
