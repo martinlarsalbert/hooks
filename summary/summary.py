@@ -18,6 +18,8 @@ def find_summary(filenames:list,summary_name='summary.ipynb')->str:
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
 
+    print('Summmmmmmary')
+
     parser = argparse.ArgumentParser()
     parser.add_argument(
         'filenames', nargs='*',
@@ -41,5 +43,4 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     return 0
 
 if __name__ == '__main__':
-    print('Summmmmmmary')
     exit(main())
