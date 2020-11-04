@@ -4,6 +4,8 @@ from typing import Optional
 from typing import Sequence
 from typing import Set
 
+import os
+
 from summary.converter import append_new_body
 
 def find_summary(filenames:list,summary_name='summary.ipynb')->str:
@@ -19,6 +21,7 @@ def find_summary(filenames:list,summary_name='summary.ipynb')->str:
 def main(argv: Optional[Sequence[str]] = None) -> int:
 
     print('Summmmmmmary')
+    print(os.getcwd())
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
