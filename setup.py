@@ -21,6 +21,7 @@ setuptools.setup(
     entry_points={
     'console_scripts': [
         'example = example.example:main',
+        'summary = summary.summary:main',
     ],
     },
     python_requires='>=3.5',
