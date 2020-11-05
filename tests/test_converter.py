@@ -91,6 +91,16 @@ jadajada
 
     assert new_body == s_expected
 
+def test_append_paths2():
+
+    s = r'[test.ipynb](test.ipynb)'
+
+    new_body = append_paths(rel_path='rel', body=s, verify_paths=False)
+
+    s_expected = r'[test.ipynb](rel/test.ipynb)'
+
+    assert new_body == s_expected
+
 def test_append_new_body(test_repo):
 
     summary_file_path = test_repo[0]

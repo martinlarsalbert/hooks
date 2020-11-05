@@ -54,8 +54,9 @@ def append_paths(rel_path:str,body:str, verify_paths=True)->str:
             if not os.path.exists(new_path):
                 missing.append(new_path)
 
-        pat = r'(%s)'
-        new_body = re.sub(pattern=pat%path, repl=new_path, string=new_body)
+        pat = r'\(%s\)'
+
+        new_body = re.sub(pattern=pat%path, repl='(%s)' % new_path, string=new_body)
 
     if verify_paths:
         if len(missing)>0:

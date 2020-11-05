@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="hooks", # Replace with your own username
-    version="0.0.22",
+    version="0.0.23",
     author="Example Author",
     author_email="author@example.com",
     description="A small example package",
