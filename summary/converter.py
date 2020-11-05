@@ -3,6 +3,7 @@ from nbconvert import MarkdownExporter
 import nbformat
 import re
 
+class BadLinkError(ValueError):pass
 
 def convert_to_markdown(filename):
 
@@ -33,7 +34,7 @@ def find_paths(body:str)->list:
     paths = list(set(paths))  # only uniques
     return paths
 
-def append_paths(rel_path:str,body:str)->str:
+def append_paths(rel_path:str,body:str, verify_paths=True)->str:
     """
     Links looking like:
     (example.ipynb)[notebooks/example.ipynb]
@@ -43,25 +44,35 @@ def append_paths(rel_path:str,body:str)->str:
     new_body = str(body)
     paths = find_paths(body=body)
 
+    missing = []
     for path in paths:
         if 'http' in path:
             continue  # Skipping urls.
 
         new_path = '%s/%s' % (rel_path,path)
-        new_body = new_body.replace(path, new_path)
+        if verify_paths:
+            if not os.path.exists(new_path):
+                missing.append(new_path)
+
+        pat = r'(%s)'
+        new_body = re.sub(pattern=pat%path, repl=new_path, string=new_body)
+
+    if verify_paths:
+        if len(missing)>0:
+            raise BadLinkError('The follwing paths are invalid:\n%s' % missing)
 
     return new_body
 
-def replace_paths(summary_filename,readme_path='README.md'):
+def replace_paths(summary_filename,readme_path='README.md', verify_paths=True):
 
     body, resources = convert_to_markdown(filename=summary_filename)
     rel_path = get_relative_path(summary_filename, readme_path)
-    new_body = append_paths(rel_path=rel_path, body=body)
+    new_body = append_paths(rel_path=rel_path, body=body, verify_paths=verify_paths)
     return new_body
 
-def append_new_body(summary_filename,readme_path='README_.md'):
+def append_new_body(summary_filename,readme_path='README_.md', verify_paths=True):
 
-    new_body = replace_paths(summary_filename=summary_filename, readme_path=readme_path,)
+    new_body = replace_paths(summary_filename=summary_filename, readme_path=readme_path,verify_paths=verify_paths)
 
     with open(readme_path, mode='r') as file:
         s_readme = file.read()

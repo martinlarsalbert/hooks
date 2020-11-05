@@ -81,7 +81,7 @@ jadajada
 [test2.ipynb](notebooks/test2.ipynb)
 """
 
-    new_body = append_paths(rel_path='rel', body=s)
+    new_body = append_paths(rel_path='rel', body=s, verify_paths=False)
 
     s_expected = r"""
 [test.ipynb](rel/notebooks/test.ipynb)
@@ -96,5 +96,5 @@ def test_append_new_body(test_repo):
     summary_file_path = test_repo[0]
     readme_path = test_repo[1]
 
-    new_s_readme = append_new_body(summary_filename=summary_file_path, readme_path=readme_path)
+    new_s_readme = append_new_body(summary_filename=summary_file_path, readme_path=readme_path, verify_paths=False)
 
