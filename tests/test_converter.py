@@ -51,6 +51,14 @@ def test_get_relative_path(test_repo):
     rel_path = get_relative_path(summary_filename=summary_file_path, readme_path=readme_path)
     assert os.path.abspath(rel_path) == os.path.abspath('path')
 
+def test_get_relative_path2(test_repo):
+
+    summary_file_path = os.path.abspath(r'notebooks/summary')
+    readme_path = r''
+
+    rel_path = get_relative_path(summary_filename=summary_file_path, readme_path=readme_path)
+    assert os.path.abspath(rel_path) == os.path.abspath('notebooks')
+
 def test_find_paths():
 
     s = r"""

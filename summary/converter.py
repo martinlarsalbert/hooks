@@ -24,6 +24,8 @@ def get_relative_path(summary_filename,readme_path):
     common_prefix = base_path = os.path.commonprefix([readme_path, summary_filename])
     rel_path = os.path.relpath(summary_filename, common_prefix)  # path from README.md to summary.ipynb
     rel_path=rel_path.replace(summary_name,'')
+    rel_path = rel_path.replace("\\","/")
+
     return rel_path[0:-1]
 
 def find_paths(body:str)->list:
@@ -42,6 +44,9 @@ def append_paths(rel_path:str,body:str)->str:
     paths = find_paths(body=body)
 
     for path in paths:
+        if 'http' in path:
+            continue  # Skipping urls.
+
         new_path = '%s/%s' % (rel_path,path)
         new_body = new_body.replace(path, new_path)
 

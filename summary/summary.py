@@ -20,9 +20,6 @@ def find_summary(filenames:list,summary_name='summary.ipynb')->str:
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
 
-    print('Summmmmmmary')
-    print(os.getcwd())
-
     parser = argparse.ArgumentParser()
     parser.add_argument(
         'filenames', nargs='*',
@@ -32,9 +29,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     args = parser.parse_args(argv)
 
     summary_path = find_summary(filenames=args.filenames)
-    print(summary_path)
     if summary_path is None:
         return 0
+
+    print('Appending summary.ipynb to README.md')
+    print(os.getcwd())
 
     summary_path = os.path.abspath(summary_path)
 
